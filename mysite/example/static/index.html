@@ -23,7 +23,8 @@
         function test() {
             var fn = document.getElementById('func').value;
             var args = JSON.parse(document.getElementById('args').value);
-
+console.log(fn);
+if (fn == "test.delayed") console.log(args.delay);
             RPC.call(fn, args).then(onResponse, function (error) {
                 alert(error.type + '("' + error.message + '")');
             }).done();
@@ -94,7 +95,7 @@
 <script>
     examples = {
         'test': '{"key": "value"}',
-        'test.delayed': '{"delay": 2}',
+        'test.delayed': '{"delay": 3}',
         'test.exception': '{"Not":"existing method"}',
         'test.getEpoch': '{}',
         'test._secure_method': '{}',
