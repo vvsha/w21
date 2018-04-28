@@ -26,14 +26,15 @@ COOKIE_SECRET = str(uuid.uuid4())
 
 
 class Application(tornado.web.Application):
+
     def __init__(self):
         project_root = os.path.dirname(os.path.abspath(__file__))
         handlers = (
             wsrpc_static(r'/js/(.*)'),
             (r"/ws/", WebSocket),
             (r'/(.*)', tornado.web.StaticFileHandler, {
-                 'path': os.path.join(project_root, 'static'),
-                 'default_filename': 'index.html'
+                'path': os.path.join(project_root, 'static'),
+                'default_filename': 'index.html'
             }),
         )
 
